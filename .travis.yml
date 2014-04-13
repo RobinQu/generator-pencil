@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - '0.10'
+before_install:
+  - currentfolder=${PWD##*/}
+  - if [ "$currentfolder" != 'generator-pencil' ]; then cd .. && eval "mv $currentfolder generator-pencil" && cd generator-pencil; fi
+
