@@ -11,8 +11,8 @@ var PostGenerator = yeoman.generators.NamedBase.extend({
         dir,
         fp,
         content;
-    dir = ["src/content", today.getFullYear(), today.getMonth()+1, today.getDate()].join("/") + "/";
-    fp = dir + this._.slugify(this.name) + ".md";
+    dir = ["src/contents", today.getFullYear(), today.getMonth()+1, today.getDate()].join("/") + "/";
+    fp = dir + this._.slugify(this.name) + "/index.md";
     content = ["---", "title: " + this.name, "date: " + new Date(), "template: article", "---"].join("\n");
     this.write(fp, content);
   }
