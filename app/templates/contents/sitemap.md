@@ -1,0 +1,4 @@
+---
+template: sitemap
+ext: .xml
+---

@@ -36,7 +36,12 @@ var PencilGenerator = yeoman.generators.Base.extend({
     }, {
       type: "input",
       name: "author",
-      message: "Author name of this site"
+      message: "Author name of this site",
+      default: "Great writer"
+    }, {
+      type: "input",
+      name: "disqus",
+      message: "Enter your Disqus username to enable comment feature (Leave it blank if you don't want to use Disqus)"
     }];
 
     this.prompt(prompts, function (props) {
@@ -45,21 +50,29 @@ var PencilGenerator = yeoman.generators.Base.extend({
       site.git = props.git;
       site.author = props.author;
       this.site = site;
+      
+      this.disqus = props.disqus;
       done();
     }.bind(this));
   },
 
   app: function () {
     this.mkdir("src");
-    this.mkdir("src/templates");
 
     this.copy("_package.json", "package.json");
+    this.copy("_README.md", "README.md");
+    this.directory("contents", "src/contents");
+    this.directory("templates", "src/templates");
+    this.directory("data", "src/data");
+    this.directory("assets", "src/assets");
+    
     // bower is not used currently
     // this.copy("_bower.json", "bower.json");
   },
 
   projectfiles: function () {
     this.copy("editorconfig", ".editorconfig");
+    this.copy("jshintrc", ".jshintrc");
     this.copy("jshintrc", ".jshintrc");
   }
 });

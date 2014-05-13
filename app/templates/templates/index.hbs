@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>{{site.name}}</title>
+    {{> manifest}}
+  </head>
+  <body class="no-sidebar loading">
+    
+    <article id="main">
+      <header class="special container">
+        <span class="icon fa-home"></span>
+        <h2>Latest Posts</h2>
+      </header>
+      
+      <section class="posts">
+        {{> posts}}
+      </section>
+      
+      {{#hasNextPage}}
+      <section class="wrapper style1 special container pagination">
+        <ul>
+          <li><a href="{{nextPage}}" class="button">Older Posts</a></li>
+        </ul>
+      </section>
+      {{/hasNextPage}}
+      
+    </article>
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>{{metadata.title}} - {{site.name}}</title>
+    {{> manifest}}
+  </head>
+  <body class="no-sidebar loading">
+    <article id="main">
+      <header class="special container">
+        <span class="icon fa-file-text"></span>
+        <h2>{{metadata.title}}</h2>
+        <p>{{metadata.date}}</p>
+      </header>
+      
+      <section class="wrapper style4 container single-post">
+        <div class="content">
+          {{{content}}}
+        </div>
+      </section>
+     
+      
+      <% if(disqus) { %>
+      <section class="wrapper style4 special container">
+        {{> comment}}
+      </section>
+      <% } %>
+      
+    </article>
+  </body>
+</html>

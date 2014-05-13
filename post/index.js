@@ -1,5 +1,5 @@
-var util = require('util');
-var yeoman = require('yeoman-generator');
+var util = require("util");
+var yeoman = require("yeoman-generator");
 
 
 var PostGenerator = yeoman.generators.NamedBase.extend({
@@ -11,9 +11,9 @@ var PostGenerator = yeoman.generators.NamedBase.extend({
         dir,
         fp,
         content;
-    dir = ["src/contents", today.getFullYear(), today.getMonth()+1, today.getDate()].join("/") + "/";
+    dir = ["src/contents", today.getFullYear(), today.getMonth() + 1, today.getDate()].join("/") + "/";
     fp = dir + this._.slugify(this.name) + "/index.md";
-    content = ["---", "title: " + this.name, "date: " + new Date(), "template: article", "---"].join("\n");
+    content = ["---", "title: " + this.name, "date: " + new Date(), "template: article", "---", "Enter your content here"].join("\n");
     this.write(fp, content);
   }
 });

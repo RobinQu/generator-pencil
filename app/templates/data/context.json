@@ -1,0 +1,7 @@
+{
+  "site": {
+    "name": "<%= site.name %>",
+    "description": "<%= site.name %>'s Website",
+    "url": "<%= site.url %>"
+  }
+}

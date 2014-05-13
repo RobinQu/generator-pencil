@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Archives - {{site.name}}</title>
+    {{> manifest}}
+  </head>
+  <body class="no-sidebar loading">
+
+    <article id="main">
+      <header class="special container">
+        <span class="icon fa-archive"></span>
+        <h2>Archives</h2>
+      </header>
+      
+      <section class="wrapper style4 container archive">
+        <div class="content">
+          <div class="row">
+            <div class="2u">
+              <h3>Years</h3>
+              <ul>
+                {{#each archive}}
+                <li><a href="#year-{{key}}" class="fit scrolly">{{key}}</a></li>
+                {{/each}}
+              </ul>
+            </div>
+            <div class="10u">
+              {{#each archive}}
+              <div class="archive-yearly" id="year-{{key}}">
+                {{#each content}}
+                <div class="archive-monthly" id="month-{{key}}">
+                  <h3>{{monthName key}}, {{../key}}</h3>
+                  <ul class="archive-daily">
+                  {{#reverse content}}
+                    {{#each content}}
+                      <li><a href="{{postlink this}}">{{metadata.title}}</a></li>
+                    {{/each}}
+                  {{/reverse}}
+                  </ul>
+                </div>
+                {{/each}}
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          
+        </div>
+      </section>
+      
+    </article>
+
+  </body>
+</html>
