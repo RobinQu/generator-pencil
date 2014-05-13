@@ -42,6 +42,10 @@ var PencilGenerator = yeoman.generators.Base.extend({
       default: "Great writer"
     }, {
       type: "input",
+      name: "url",
+      message: "URL this site"
+    }, {
+      type: "input",
       name: "disqus",
       message: "Enter your Disqus username to enable comment feature (Leave it blank if you don't want to use Disqus)"
     }, {
@@ -56,8 +60,8 @@ var PencilGenerator = yeoman.generators.Base.extend({
       site.name = props.sitename;
       site.git = props.git;
       site.author = props.author;
+      site.url = props.url;
       this.site = site;
-      
       this.primary = props.primary.split("/").pop();
       this.disqus = props.disqus;
       

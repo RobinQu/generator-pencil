@@ -2,19 +2,19 @@
  <div class="container">
    <nav class="blog-nav">
      {{#is reference "index.md"}}
-     <a class="blog-nav-item active" href="#">Home</a>
+     <a class="blog-nav-item active" href="/">Home</a>
      {{else}}
-     <a class="blog-nav-item" href="#">Home</a>
+     <a class="blog-nav-item" href="/">Home</a>
      {{/is}}
      {{#is reference "archive.md"}}
-     <a class="blog-nav-item active" href="#">New features</a>
+     <a class="blog-nav-item active" href="/archives.html">Archives</a>
      {{else}}
-     <a class="blog-nav-item" href="#">New features</a>
+     <a class="blog-nav-item" href="/archives.html">New features</a>
      {{/is}}
      {{#is reference "about.md"}}
-     <a class="blog-nav-item active" href="#">About</a>
+     <a class="blog-nav-item active" href="/about.html">About</a>
      {{else}}
-     <a class="blog-nav-item" href="#">About</a>
+     <a class="blog-nav-item" href="/about.html">About</a>
      {{/is}}
    </nav>
  </div>

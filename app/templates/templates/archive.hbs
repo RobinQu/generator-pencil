@@ -10,14 +10,6 @@
    
    <div class="container">
      <div class="row">
-       <div class="col-sm-2 sidebar">
-         <h3>Years</h3>
-         <ul>
-           {{#each archive}}
-           <li><a href="#year-{{key}}" class="fit scrolly">{{key}}</a></li>
-           {{/each}}
-         </ul>
-       </div>
        <div class="col-sm-10 blog-main">
          <h2 class="blog-post-title">Archives</h2>
          <p class="blog-post-meta">{{metadata.date}}</p>
@@ -41,17 +33,16 @@
          </div>
          
        </div>
+       <div class="col-sm-2 sidebar">
+         <h3>Years</h3>
+         <ul>
+           {{#each archive}}
+           <li><a href="#year-{{key}}" class="fit scrolly">{{key}}</a></li>
+           {{/each}}
+         </ul>
+       </div>
      </div>
    </div>
-  
-  <ul class="pager">
-    {{#hasPrevPage}}
-    <li><a href="{{prevPage}}" class="button">Newer Posts</a></li>
-    {{/hasPrevPage}}
-    {{#hasNextPage}}
-    <li><a href="{{nextPage}}" class="button">Previous</a></li>
-    {{/hasNextPage}}
-  </ul>
   
   {{> footer}}
 

@@ -102,7 +102,7 @@ module.exports = function(grunt) {
     sass: {
       build: {
         files: {
-
+          "dist/css/blog.css": "src/assets/scss/blog.scss"
         },
         options: {
           imagePath: "/images",
