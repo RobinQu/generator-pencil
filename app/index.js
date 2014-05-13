@@ -7,6 +7,8 @@ var Moniker = require("moniker");
 var PencilGenerator = yeoman.generators.Base.extend({
   init: function () {
     this.pkg = require("../package.json");
+    
+    this.pencil = this.read("./pencil");
 
     this.on("end", function () {
       if (!this.options["skip-install"]) {
@@ -19,7 +21,7 @@ var PencilGenerator = yeoman.generators.Base.extend({
     var done = this.async();
 
     // have Yeoman greet the user
-    this.log(this.yeoman);
+    this.log(this.pencil);
 
     // replace it with a short and sweet description of your generator
     this.log(chalk.magenta("You\"re using the fantastic Pencil generator."));
@@ -90,6 +92,8 @@ var PencilGenerator = yeoman.generators.Base.extend({
   },
   
   createfirst: function () {
+    this.log(chalk.magenta("Create a sample post"));
+    
     this.invoke("pencil:post", {
       args: ["brand new page"]
     });
