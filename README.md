@@ -13,10 +13,7 @@ Learn Yeoman at: http://yeoman.io
 $ npm install -g yo
 ```
 
-### Yeoman Generators
-
-
-**NOTICE**: THE MAIN GENEARTOR IS NOT DONE YET. Only some sub-generators are ready. I will part by part transfer my private code to this public repo.
+### Pencil Generators
 
 To install generator-pencil from npm, run:
 
@@ -24,11 +21,35 @@ To install generator-pencil from npm, run:
 $ npm install -g generator-pencil
 ```
 
-Finally, initiate the generator:
+Finally, initiate the generator. You will be guided to setup a static site project, with `Grunt` and `bower`.
 
 ```
 $ yo pencil
 ```
+
+#### Basic usage
+
+Preview built files locally
+
+```
+grunt preview
+```
+
+Deploy to github branch, likely `gh-pages`
+
+```
+grunt deploy
+```
+
+### Configurations
+
+Open `Gruntfile.js` and edit to match your settings.
+
+See more documentation at project home sites of these important components that power this generator:
+
+* [grunt-writer](https://github.com/RobinQu/grunt-writer/commits?author=RobinQu)
+* [marked](https://github.com/chjj/marked)
+
 
 ### Sub-geneartor
 
