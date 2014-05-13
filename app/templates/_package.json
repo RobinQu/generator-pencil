@@ -1,5 +1,44 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= site.name %>",
+  "version": "0.0.1",
+  "description": "<%= site.name %> project",
+  "scripts": {
+    "test": "DEBUG=* ./node_modules/jasmine-node/bin/jasmine-node spec/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "<%= site.git %>"
+  },
+  "author": "<%= site.author %>",
+  "homepage": "<%= site.url %>",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-build-control": "~0.1.2",
+    "time-grunt": "~0.2.10",
+    "load-grunt-tasks": "~0.4.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "cheerio": "~0.13.1",
+    "grunt-git-revision": "0.0.1",
+    "grunt-sass": "~0.12.0",
+    "grunt-open": "~0.2.3",
+    "grunt-contrib-connect": "~0.7.1",
+    "grunt-git": "~0.2.6",
+    "grunt-contrib-copy": "~0.5.0",
+    "segment": "0.0.5",
+    "natural": "~0.1.27",
+    "debug": "^0.8.0",
+    "jasmine-node": "~1.14.3",
+    "lodash": "~2.4.1",
+    "js-yaml": "^3.0.2",
+    "handlebars": "^2.0.0-alpha.2",
+    "marked": "^0.3.2",
+    "highlight.js": "^8.0.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "async": "^0.7.0",
+    "grunt-contrib-imagemin": "^0.6.1",
+    "grunt-svgmin": "^0.4.0",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-contrib-htmlmin": "^0.2.0",
+    "grunt-writer": "~0.1.0"
+  }
 }
