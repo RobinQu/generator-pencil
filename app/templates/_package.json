@@ -5,10 +5,12 @@
   "scripts": {
     "test": "DEBUG=* ./node_modules/jasmine-node/bin/jasmine-node spec/"
   },
+  <% if(site.git) { %>
   "repository": {
     "type": "git",
     "url": "<%= site.git %>"
   },
+  <% } %>
   "author": "<%= site.author %>",
   "homepage": "<%= site.url %>",
   "devDependencies": {
