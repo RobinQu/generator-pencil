@@ -5,32 +5,34 @@
     {{> manifest}}
   </head>
   <body class="no-sidebar loading">
-    
-    
-    <article id="main">
-      <header class="special container">
-        <span class="icon fa-book"></span>
-        <h2>Page {{pagination.current}} of {{pagination.total}}</h2>
-      </header>
-      
-      <section class="posts">
-        {{> posts}}
-      </section>
-      
-      <section class="wrapper style1 special container pagination">
-        <ul class="buttons">
-          {{#hasPrevPage}}
-          <li><a href="{{prevPage}}" class="button">Newer Posts</a></li>
-          {{/hasPrevPage}}
-          
-          
-          {{#hasNextPage}}
-          <li><a href="{{nextPage}}" class="button">Older Posts</a></li>
-          {{/hasNextPage}}
-        </ul>
-      </section>
-      
-    </article>
+
+   {{> header}}
+   
+   <div class="container">
+    <div class="blog-header">
+      <h1 class="blog-title">Page {{pagination.current}} of {{pagination.total}}</h1>
+    </div>
+   </div>
+   
+   
+   <div class="container">
+     <div class="row">
+       <div class="col-sm-12 blog-main">
+         {{> posts}}
+       </div>
+     </div>
+   </div>
+  
+  <ul class="pager">
+    {{#hasPrevPage}}
+    <li><a href="{{prevPage}}" class="button">Newer Posts</a></li>
+    {{/hasPrevPage}}
+    {{#hasNextPage}}
+    <li><a href="{{nextPage}}" class="button">Previous</a></li>
+    {{/hasNextPage}}
+  </ul>
+  
+  {{> footer}}
 
   </body>
 </html>

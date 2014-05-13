@@ -1,23 +1,29 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>About Me - {{site.name}}</title>
+    <title>About - {{site.name}}</title>
     {{> manifest}}
   </head>
   <body class="no-sidebar loading">
-
-    <article id="main">
-      <header class="special container">
-        <span class="icon fa-user"></span>
-        <h2>About Me</h2>
-      </header>
-      
-      <section class="wrapper style4 container single-post">
-        <div class="content">
-          {{{content}}}
-        </div>
-      </section>
-      
-    </article>
+  <div class="container">
+   <div class="blog-header">
+     <h1 class="blog-title">About</h1>
+   </div>
+  </div>
+   
+   <div class="container">
+     <div class="row">
+       <div class="col-sm-12 blog-main">
+         <div class="blog-post">
+           <div class="content">
+             {{content}}
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   
+   {{> footer}}
+   
   </body>
 </html>

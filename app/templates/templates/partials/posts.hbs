@@ -1,20 +1,12 @@
 {{#each posts}}
-<section class="wrapper style3 container special single-post">
-  <header class="major">
-    <h2><a href="{{postlink this}}">{{metadata.title}}</a></h2>
-    <p>{{metadata.date}}</p>
-  </header>
-  <div class="row">
-    <div class="12u">
-      <div class="content">
-        {{md metadata.summary}}
-      </div>
-    </div>
+<div class="blog-post">
+  <h2 class="blog-post-title">{{metadata.title}}</h2>
+  <p class="blog-post-meta">{{metadata.date}}</p>
+  
+  <div class="content">
+    {{md metadata.summary}}
   </div>
-  <footer class="major">
-    <ul class="buttons">
-      <li><a href="{{postlink this}}#more" class="button">See More</a></li>
-    </ul>
-  </footer>
-</section>
+  
+  <a href="{{postlink this}}#more" class="button">See More</a>
+</div>
 {{/each}}

@@ -5,26 +5,30 @@
     {{> manifest}}
   </head>
   <body class="no-sidebar loading">
-    <article id="main">
-      <header class="special container">
-        <span class="icon fa-file-text"></span>
-        <h2>{{metadata.title}}</h2>
-        <p>{{metadata.date}}</p>
-      </header>
-      
-      <section class="wrapper style4 container single-post">
-        <div class="content">
-          {{{content}}}
-        </div>
-      </section>
+
+   {{> header}}
+   
+   <div class="container">
+     <div class="row">
+       <div class="col-sm-12 blog-main">
+         <div class="blog-post">
+           <h2 class="blog-post-title">{{metadata.title}}</h2>
+           <p class="blog-post-meta">{{metadata.date}}</p>
+           <div class="content">
+             {{content}}
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-sm-12 blog-comments">
+       {{#if disqus}}
+       {{> comment}}
+       {{/if}}
+       </div>
+     </div>
      
-      
-      <% if(disqus) { %>
-      <section class="wrapper style4 special container">
-        {{> comment}}
-      </section>
-      <% } %>
-      
-    </article>
+     {{> footer}}
+   </div>
   </body>
 </html>

@@ -5,26 +5,32 @@
     {{> manifest}}
   </head>
   <body class="no-sidebar loading">
-    
-    <article id="main">
-      <header class="special container">
-        <span class="icon fa-home"></span>
-        <h2>Latest Posts</h2>
-      </header>
-      
-      <section class="posts">
-        {{> posts}}
-      </section>
-      
-      {{#hasNextPage}}
-      <section class="wrapper style1 special container pagination">
-        <ul>
-          <li><a href="{{nextPage}}" class="button">Older Posts</a></li>
-        </ul>
-      </section>
-      {{/hasNextPage}}
-      
-    </article>
 
+   {{> header}}
+   
+   <div class="container">
+    <div class="blog-header">
+      <h1 class="blog-title">{{site.name}}</h1>
+      <p class="lead blog-description">{{site.description}}</p>
+    </div>
+   </div>
+   
+   
+   <div class="container">
+     <div class="row">
+       <div class="col-sm-12 blog-main">
+         {{> posts}}
+       </div>
+     </div>
+   </div>
+    
+    
+  {{#hasNextPage}}
+  <ul class="pager">
+    <li><a href="{{nextPage}}" class="button">Previous</a></li>
+  </ul>
+  {{/hasNextPage}}
+  
+  {{> footer}}
   </body>
 </html>

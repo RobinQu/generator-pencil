@@ -83,7 +83,8 @@ var PencilGenerator = yeoman.generators.Base.extend({
     this.directory("assets", "src/assets");
     
     // bower is not used currently
-    // this.copy("_bower.json", "bower.json");
+    this.template("_bower.json", "bower.json");
+    this.copy("bowerrc", ".bowerrc");
   },
 
   projectfiles: function () {

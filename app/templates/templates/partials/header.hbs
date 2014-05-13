@@ -1,0 +1,22 @@
+<div class="blog-masthead">
+ <div class="container">
+   <nav class="blog-nav">
+     {{#is reference "index.md"}}
+     <a class="blog-nav-item active" href="#">Home</a>
+     {{else}}
+     <a class="blog-nav-item" href="#">Home</a>
+     {{/is}}
+     {{#is reference "archive.md"}}
+     <a class="blog-nav-item active" href="#">New features</a>
+     {{else}}
+     <a class="blog-nav-item" href="#">New features</a>
+     {{/is}}
+     {{#is reference "about.md"}}
+     <a class="blog-nav-item active" href="#">About</a>
+     {{else}}
+     <a class="blog-nav-item" href="#">About</a>
+     {{/is}}
+   </nav>
+ </div>
+</div>
+
