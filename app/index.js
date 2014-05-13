@@ -59,20 +59,19 @@ var PencilGenerator = yeoman.generators.Base.extend({
   app: function () {
     this.mkdir("src");
 
-    this.copy("_package.json", "package.json");
-    this.copy("_README.md", "README.md");
+    this.template("_package.json", "package.json");
+    this.template("_README.md", "README.md");
+    this.template("_Gruntfile.js", "Gruntfile.js");
     this.directory("contents", "src/contents");
     this.directory("templates", "src/templates");
     this.directory("data", "src/data");
     this.directory("assets", "src/assets");
-    
     // bower is not used currently
     // this.copy("_bower.json", "bower.json");
   },
 
   projectfiles: function () {
     this.copy("editorconfig", ".editorconfig");
-    this.copy("jshintrc", ".jshintrc");
     this.copy("jshintrc", ".jshintrc");
   }
 });
