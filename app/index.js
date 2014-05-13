@@ -42,6 +42,11 @@ var PencilGenerator = yeoman.generators.Base.extend({
       type: "input",
       name: "disqus",
       message: "Enter your Disqus username to enable comment feature (Leave it blank if you don't want to use Disqus)"
+    }, {
+      type: "input",
+      name: "primary",
+      message: "Where would like to store the documents?",
+      default: "src/contents/blog"
     }];
 
     this.prompt(prompts, function (props) {
@@ -51,9 +56,17 @@ var PencilGenerator = yeoman.generators.Base.extend({
       site.author = props.author;
       this.site = site;
       
+      this.primary = props.primary.split("/").pop();
       this.disqus = props.disqus;
+      
       done();
     }.bind(this));
+  },
+  
+  persist: function () {
+    this.write(".writerrc", JSON.stringify({
+      "primary": this.primary
+    }));
   },
 
   app: function () {
@@ -66,6 +79,7 @@ var PencilGenerator = yeoman.generators.Base.extend({
     this.directory("templates", "src/templates");
     this.directory("data", "src/data");
     this.directory("assets", "src/assets");
+    
     // bower is not used currently
     // this.copy("_bower.json", "bower.json");
   },
@@ -73,6 +87,12 @@ var PencilGenerator = yeoman.generators.Base.extend({
   projectfiles: function () {
     this.copy("editorconfig", ".editorconfig");
     this.copy("jshintrc", ".jshintrc");
+  },
+  
+  createfirst: function () {
+    this.invoke("pencil:post", {
+      args: ["brand new page"]
+    });
   }
 });
 
