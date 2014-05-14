@@ -1,71 +1,303 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Generator-pencil by RobinQu</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Generator-pencil : Yeoman generator for static sites like Github Pages" />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Generator-pencil</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Generator-pencil</h1>
-        <p>Yeoman generator for static sites like Github Pages</p>
 
-        <p class="view"><a href="https://github.com/RobinQu/generator-pencil">View the Project on GitHub <small>RobinQu/generator-pencil</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/RobinQu/generator-pencil">View on GitHub</a>
 
+          <h1 id="project_title">Generator-pencil</h1>
+          <h2 id="project_tagline">Yeoman generator for static sites like Github Pages</h2>
 
-        <ul>
-          <li><a href="https://github.com/RobinQu/generator-pencil/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/RobinQu/generator-pencil/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/RobinQu/generator-pencil">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/RobinQu/generator-pencil/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/RobinQu/generator-pencil/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="generator-pencil" class="anchor" href="#generator-pencil"><span class="octicon octicon-link"></span></a>generator-pencil</h1>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p>如果你有想过利用免费的Github服务来托管静态站点，你就一定用过不少站点生成器。大名鼎鼎的<a href="http://jekyllrb.com/">Jeklly</a>，以及它的增强型变种<a href="http://octopress.org/">Octopress</a>。</p>
+
+<p>在你阅读了各式各样的教程、API文档之后，你终于开始写下第一篇博文。到这里还算是不错的体验，但是一段时间之后：</p>
+
+<ul>
+<li>这些软件的<code>preview</code>和<code>build</code>慢如蜗牛</li>
+<li>各式各样的<code>plugin</code>、<code>theme</code>看起来美好，但是
+
+<ul>
+<li>你却完全不知道它在干什么，还需要继续阅读一堆文档来正确配置它。</li>
+<li>它会让你的<code>build</code>更慢</li>
+<li>它会让你的页面浏览更慢</li>
+</ul>
+</li>
+<li>你愿意为任何小功能来来实现一个简单的小功能么？</li>
+</ul><h2>
+<a name="small-fast-and-simple" class="anchor" href="#small-fast-and-simple"><span class="octicon octicon-link"></span></a>Small, fast, and simple</h2>
+
+<p><a href="https://github.com/RobinQu/generator-pencil">generator-pencil</a>是一个yeoman generator。这个工具的特性：</p>
+
+<ul>
+<li>使用<code>Markdown</code>来存储文章内容和附加数据(<code>metadata</code>)</li>
+<li>使用<code>Handlebar</code>来渲染页面，同时提供更强大的模板功能(partial、helpers等)</li>
+<li>整体流程的自动化工作则由<code>Grunt</code>和一些子任务(<code>build</code>、<code>preview</code>、<code>deploy</code>)完成</li>
+</ul><p>如果你不明白上面这些工具也没关系，因为，大多数情况下，你可以不必修改任何配置。简单的模板和js文件，你也可以随意修改，事情比你想象中的简单得多。</p>
+
+<h2>
+<a name="%E5%AE%89%E8%A3%85" class="anchor" href="#%E5%AE%89%E8%A3%85"><span class="octicon octicon-link"></span></a>安装</h2>
+
+<pre><code>npm install yo grunt-cli -g
+npm install generator-pencil
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<blockquote>
+<p>由于要使用更快速的<code>node-scss</code>作为样式表编译操作；而<code>node-scss</code>目前<a href="https://github.com/andrew/node-sass/pull/188">不支持</a><code>node v0.11.x</code>。所以目前来说，本模块目前也不支持最新的<code>node</code>。不过你可以将<code>node-scss</code>从任务列表中删除，这样将没有使用最新版<code>node</code>的限制。</p>
+</blockquote>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<h2>
+<a name="%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%AB%99%E7%82%B9" class="anchor" href="#%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%AB%99%E7%82%B9"><span class="octicon octicon-link"></span></a>创建第一个站点</h2>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<pre><code>mkdir mysite &amp;&amp; cd mysite
+yo pencil
+</code></pre>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>接下来，你会看到一些可交互的命令行提示：</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<ul>
+<li>首先是询问站定名称，看起来<code>rural-potato</code>不是太好的名字，你最好写上更帅的名字</li>
+</ul><p><img src="./Screen%20Shot%202014-05-14%20at%20%E4%B8%8B%E5%8D%8812.46.40.png" alt="Ask for sitename"></p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<ul>
+<li>然后会询问Github上，该站点的git地址，你应该填写ssh协议的地址，例如<code>git@github.com:RobinQu/mysite.git</code>。该地址的的<code>gh-pages</code>分支将会成为我们部署的目标。当然，你可以直接输入<code>回车</code>跳过这个步骤，之后再整合你自己的部署流程。</li>
+</ul><p><img src="./Screen%20Shot%202014-05-14%20at%20%E4%B8%8B%E5%8D%8812.48.45.png" alt="Ask for git"></p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ul>
+<li>请问站点的作者名称？你是<code>Grea writer</code>么？</li>
+</ul><p><img src="./Screen%20Shot%202014-05-14%20at%20%E4%B8%8B%E5%8D%881.02.01.png" alt="Ask for author"></p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<ul>
+<li>你的站点URL将会是什么？请不要将URL的结尾加上<code>/</code>。例如，我的个人博客是 <code>http://robinqu.me</code>，而不是<code>http://robinqu.me/</code>。</li>
+</ul><p><img src="./Screen%20Shot%202014-05-14%20at%20%E4%B8%8B%E5%8D%881.05.16.png" alt="Ask for url"></p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ul>
+<li>是否启用<a href="http://disqus.com/">Disqus</a>作为你的评论系统。如果需要Disqus，请输入你的Disqus ID：</li>
+</ul><p><img src="./Screen%20Shot%202014-05-14%20at%20%E4%B8%8B%E5%8D%881.10.56.png" alt="Ask for disqus"></p>
+
+<ul>
+<li>在哪里储存你的<code>Markdown</code>文档？默认是<code>src/contents/blog</code>文件夹，建议不修改。</li>
+</ul><p><img src="./Screen%20Shot%202014-05-14%20at%20%E4%B8%8B%E5%8D%881.12.50.png" alt="Ask for src"></p>
+
+<p>这是该向导最后一个问题，接下来程序会帮你安装各种依赖的工具和插件。</p>
+
+<p>安装完成后，你得到一个如下的目录结构：</p>
+
+<p><img src="./Screen%20Shot%202014-05-14%20at%20%E4%B8%8B%E5%8D%881.17.55.png" alt="Folder structure"></p>
+
+<p>其实，程序还偷偷帮你新建了一篇文章，名字叫<code>A Brand new page</code>。</p>
+
+<p>文章放在<code>src/contents/blog</code>文件夹下，并按照年、月、日分组。打开这篇新创建的文章：</p>
+
+<pre><code>---
+title: brand new page
+date: Wed May 14 2014 13:13:36 GMT+0800 (CST)
+template: article
+---
+Enter your content here
+</code></pre>
+
+<p>内容十分简单，但是开头的这些代码，不少人会熟悉。对，和<code>Octopress</code>等一样，<code>geneartor-pencil</code>也支持在<code>Markdown</code>内嵌入<a href="http://www.yaml.org/">YAML</a>格式的数据，作为这篇文档的属性信息。有一些属性是有特殊意义的，例如<code>title</code>。这里详细的定义，请<a href="https://github.com/RobinQu/grunt-writer#write-a-markdown">参考文档</a>。</p>
+
+<h2>
+<a name="%E6%88%91%E8%A6%81%E7%9C%8B%E6%95%88%E6%9E%9C" class="anchor" href="#%E6%88%91%E8%A6%81%E7%9C%8B%E6%95%88%E6%9E%9C"><span class="octicon octicon-link"></span></a>我要看效果！</h2>
+
+<p>如果你之前选择了发布到<code>Github</code>，并填写了GIT地址，那么你要确保当前项目的文件夹是一个初始化过的<code>Git working copy</code>：</p>
+
+<pre lang="shell"><code># 初始化git版本库
+git init
+# 添加你的实际GIT版本库的远程地址
+git remote add origin &lt;your git repo url&gt;
+# 添加目前的改动
+git add .
+# 进行第一次提交
+git commit -a -m "站点的起点"
+</code></pre>
+
+<p>无论是写了文章，还是修改了配置，在进行预览或发布之前都<strong>必须</strong>进行提交。否则，你看到的将不会是你期望的内容。</p>
+
+<p>说了这么多，我们终于可以看看效果了：</p>
+
+<pre><code>grunt preview
+</code></pre>
+
+<p>这个命令会在本地的9000端口开启一个HTTP服务器。正常的输出开启是这样。你可以不关注输出内容，但你需要知道，当出现<code>Waiting</code>字样时，代表所有任务都完成了， 你可以打开<a href="http://localhost:9000/">http://localhost:9000/</a>看看了。</p>
+
+<pre><code>$ grunt preview
+Running "revision" task
+HEAD at revision 88e0eba
+
+Running "clean:build" (clean) task
+
+Running "writer:all" (writer) task
+
+Running "concurrent:build" (concurrent) task
+
+    Running "imagemin:dist" (imagemin) task
+    Minified 0 images (saved 0 B)
+
+    Done, without errors.
+
+
+    Execution Time (2014-05-14 05:35:46 UTC)
+    loading tasks  3ms  ▇▇▇▇▇▇▇▇▇▇▇▇ 25%
+    imagemin:dist  9ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 75%
+    Total 12ms
+
+    Running "sass:build" (sass) task
+    File dist/css/blog.css created.
+
+    Done, without errors.
+
+
+    Execution Time (2014-05-14 05:35:46 UTC)
+    loading tasks   3ms  ▇▇▇▇▇▇▇▇ 17%
+    sass:build     14ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 78%
+    Total 18ms
+
+    Running "svgmin:dist" (svgmin) task
+    Total saved: 0 B
+
+    Done, without errors.
+
+
+    Execution Time (2014-05-14 05:35:46 UTC)
+    loading tasks   3ms  ▇▇▇▇ 7%
+    svgmin:dist    43ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 93%
+    Total 46ms
+
+    Running "htmlmin:dist" (htmlmin) task
+    Minified dist/about.html 1.86 kB → 1.51 kB
+    Minified dist/archive.html 2.31 kB → 1.67 kB
+    Minified dist/blog/2014/5/14/brand-new-page/index.html 2.72 kB → 2.28 kB
+    Minified dist/index.html 2.04 kB → 1.68 kB
+    Minified dist/page/1/index.html 2 kB → 1.64 kB
+
+    Done, without errors.
+
+
+    Execution Time (2014-05-14 05:35:46 UTC)
+    loading tasks   3ms  ▇▇▇▇▇ 9%
+    htmlmin:dist   31ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 89%
+    Total 35ms
+
+    Running "copy:resources" (copy) task
+    Created 35 directories, copied 179 files
+
+    Done, without errors.
+
+
+    Execution Time (2014-05-14 05:35:46 UTC)
+    loading tasks     2ms  ▇ 1%
+    copy:resources  190ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 98%
+    Total 193ms
+
+Running "connect:preview" (connect) task
+Started connect web server on http://0.0.0.0:9000
+
+Running "watch" task
+Waiting...
+</code></pre>
+
+<p>看起来一切正常，我们打开<a href="http://localhost:9000/">http://localhost:9000/</a>。</p>
+
+<p><img src="./Screen%20Shot%202014-05-14%20at%20%E4%B8%8B%E5%8D%881.40.36.png" alt="Home page"></p>
+
+<p>事情就是这么简单！你已经可以在这个简单的站点里面转转了。事实上，程序已经帮你做好了这些页面：</p>
+
+<ul>
+<li>首页 <code>/</code>
+</li>
+<li>介绍页面 <code>/about.html</code>
+</li>
+<li>归档页面 <code>/archve.html</code>
+</li>
+<li>文章列表页面 <code>/page/{page}</code>
+</li>
+</ul><h2>
+<a name="%E5%88%9B%E5%BB%BA%E6%96%B0%E6%96%87%E7%AB%A0" class="anchor" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E6%96%87%E7%AB%A0"><span class="octicon octicon-link"></span></a>创建新文章</h2>
+
+<p>如何创建新文章？</p>
+
+<pre><code>yo pencil:post "Another post"
+</code></pre>
+
+<p><img src="./Screen%20Shot%202014-05-14%20at%20%E4%B8%8B%E5%8D%881.52.14.png" alt="new post"></p>
+
+<p>新的文章就生成好了；打开你喜欢的Markdown编辑器开始写作吧！</p>
+
+<h2>
+<a name="%E5%8F%91%E5%B8%83%E5%88%B0%E7%BA%BF%E4%B8%8A" class="anchor" href="#%E5%8F%91%E5%B8%83%E5%88%B0%E7%BA%BF%E4%B8%8A"><span class="octicon octicon-link"></span></a>发布到线上</h2>
+
+<p>同样也是一条命令：</p>
+
+<pre><code>grunt deploy
+</code></pre>
+
+<p>你可以到你之前设置的线上地址查收部署结果了。</p>
+
+<h2>
+<a name="%E6%8E%A5%E4%B8%8B%E6%9D%A5" class="anchor" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5"><span class="octicon octicon-link"></span></a>接下来...</h2>
+
+<ul>
+<li>了解更多配置信息，例如自定义页面等：
+
+<ul>
+<li>
+<a href="https://github.com/RobinQu/grunt-writer">grunt-writer</a>: 这是<code>generator-pencil</code>的力量来源，大部分逻辑存在于这个Grunt任务重</li>
+<li>
+<a href="https://github.com/chjj/marked">marked</a>：这是完成Markdown向HTML转换的重要组建。速度是它的强项。</li>
+<li>
+<a href="https://github.com/robwierzbowski/grunt-build-control">build-control</a>：这是完成GIT发布的模块。</li>
+</ul>
+</li>
+<li>如果你想添加Google统计、广告，直接试试编辑<code>src/templates/partials/footer.hbs</code>这个模板吧，这和普通Web开发没有什么区别</li>
+<li>如果你想从<code>Octopress</code>迁移你的Markdown文档，这也是没有压力的，<code>generator-pencil</code>完全兼容这些文档。你需要做的就是文件拷贝工作。</li>
+<li>遇到问题的话就来问我咯：
+
+<ul>
+<li><a href="https://github.com/RobinQu/generator-pencil/issues?state=open">提交BUG</a></li>
+<li><a href="mailto://robinqu@gmail.com">电子邮件</a></li>
+<li><a href="http://weibo.com/robinqu/profile">@ELFVision</a></li>
+</ul>
+</li>
+</ul>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/RobinQu">RobinQu</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Generator-pencil maintained by <a href="https://github.com/RobinQu">RobinQu</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -76,6 +308,7 @@ $ git checkout gh-pages
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
