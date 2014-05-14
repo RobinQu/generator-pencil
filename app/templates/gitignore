@@ -1,3 +1,6 @@
 node_modules
 *.log
 src/assets/bower_components
+dist
+tmp
+.DS_Store
