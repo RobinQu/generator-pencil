@@ -43,8 +43,10 @@ module.exports = function(grunt) {
             langPrefix: "hjs-"
           },
           context: {
-            buildDate: (new Date()).toISOString(),
-            revision: <%= "\"\<\%\= meta.revision \%\>\"" %>
+            <% if(site.git) { %>
+            revision: <%= "\"\<\%\= meta.revision \%\>\"" %>,
+            <% } %>
+            buildDate: (new Date()).toISOString()
           }
         }
       }
@@ -125,7 +127,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    <% } %>
     
     revision: {
       options: {
@@ -134,6 +135,7 @@ module.exports = function(grunt) {
         short: true
       }
     },
+    <% } %>
     
     connect: {
       options: {
@@ -176,7 +178,7 @@ module.exports = function(grunt) {
   
   grunt.registerTask("default", "build");
   
-  grunt.registerTask("build", ["revision", "clean:build", "writer:all", "concurrent:build"]);
+  grunt.registerTask("build", [<% if(site.git) { %>"revision",<% } %> "clean:build", "writer:all", "concurrent:build"]);
   
   grunt.registerTask("preview", ["build", "connect:preview", "watch"]);
   

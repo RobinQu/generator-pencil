@@ -1,5 +1,5 @@
 {
-  "name": "<%= site.name %>",
+  "name": "PencilGeneratedProject",
   "version": "0.0.1",
   "description": "<%= site.name %> project",
   "scripts": {

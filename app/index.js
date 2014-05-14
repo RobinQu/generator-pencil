@@ -3,6 +3,7 @@ var path = require("path");
 var yeoman = require("yeoman-generator");
 var chalk = require("chalk");
 var Moniker = require("moniker");
+var validator = require("validator");
 
 var PencilGenerator = yeoman.generators.Base.extend({
   init: function () {
@@ -25,7 +26,6 @@ var PencilGenerator = yeoman.generators.Base.extend({
 
     // replace it with a short and sweet description of your generator
     this.log(chalk.magenta("You\"re using the fantastic Pencil generator."));
-    this.log(chalk.red("This generator is working in progress. The main generator is far from completed."));
     var prompts = [{
       type: "input",
       name: "sitename",
@@ -43,7 +43,10 @@ var PencilGenerator = yeoman.generators.Base.extend({
     }, {
       type: "input",
       name: "url",
-      message: "URL this site"
+      message: "URL this site",
+      validate: function(input) {
+        return validator.isURL(input);
+      }
     }, {
       type: "input",
       name: "disqus",
@@ -60,7 +63,7 @@ var PencilGenerator = yeoman.generators.Base.extend({
       site.name = props.sitename;
       site.git = props.git;
       site.author = props.author;
-      site.url = props.url;
+      site.url = props.url.replace(/\/$/, "");
       this.site = site;
       this.primary = props.primary.split("/").pop();
       this.disqus = props.disqus;
@@ -89,6 +92,7 @@ var PencilGenerator = yeoman.generators.Base.extend({
     // bower is not used currently
     this.template("_bower.json", "bower.json");
     this.copy("bowerrc", ".bowerrc");
+    this.copy("gitignore", ".gitignore");
   },
 
   projectfiles: function () {
